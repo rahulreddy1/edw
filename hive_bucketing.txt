@@ -1,1 +1,15 @@
 
+set hive.enforce.bucketing=true;
+
+
+CREATE EXTERNAL TABLE bucket_table (
+col1 int,
+col2 string,
+col3 int,
+col4 string
+)
+CLUSTERED BY (order_id) INTO 16 BUCKETS
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE
+LOCATION '/user/hive/warehouse/filename';
