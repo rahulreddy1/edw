@@ -1,0 +1,15 @@
+-- Create a new table from already existing table
+
+Create table newtable as select * from oldtable;
+
+-- Creating a new table by querying existing table
+
+INSERT OVERWRITE table newtablename
+select level, sum(amount) from out2
+group by level;
+
+-- Creating a new table by joining 2 existing tables
+
+INSERT OVERWRITE table newtablename                                                                           
+select a.id, a.firstname, a.age, a.profession, b.amount, b.product                                     
+from table1 a JOIN table2 b ON a.id = b.id;
