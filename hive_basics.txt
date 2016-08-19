@@ -1,0 +1,8 @@
+show databases;
+
+use dbname;
+
+show tables;
+
+create database IF NOT EXISTS dbname;
+
