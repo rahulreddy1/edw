@@ -1,0 +1,26 @@
+
+-- Creating table
+-- Make sure table is bucketed, file format is orc and 
+-- transactional is set to true under tblproperties
+
+
+CREATE TABLE table_name (i int, j string)
+CLUSTERED BY (i) INTO 4 BUCKETS
+STORED AS ORC
+tblproperties ('transactional'='true');
+
+-- Inserting data
+insert into table table_name values (1, ‘rahul');
+insert into table table_name values (2, 'basani’);
+--or insert into table table_name (i, j) values (1, 'rahu’);
+
+-- Updating data
+update table_name set j = 'rahu' where i = 2;
+
+-- Deleting data
+delete table_name where i = 1;
+
+--Limitations to use insert, update and delete:
+--File format must be in ORC
+--Table must be bucketed
+--Transactional must be set to true under tblproperties
