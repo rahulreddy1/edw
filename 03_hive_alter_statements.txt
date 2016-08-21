@@ -1,1 +1,24 @@
 
+--rename table
+
+ALTER TABLE old_db_name.old_table_name RENAME TO new_db_name.new_table_name
+
+--move table from another database to the current one.
+
+ALTER TABLE d1.mobile RENAME to mobile;
+
+--move table from one database to another.
+
+ALTER TABLE d2.mobile RENAME to d3.mobile;
+
+--columns
+
+ALTER TABLE table_name ADD COLUMNS (col1 STRING, col2 INT);
+ALTER TABLE table_name DROP COLUMN column_name;
+ALTER TABLE table_name CHANGE column_name new_name STRING;
+ALTER TABLE table_name REPLACE COLUMNS (old_id INT new_id INT, old_name STRING new_name STRING);
+
+--partitions
+
+ALTER TABLE table_name add partition (month=1, day=1);
+ALTER TABLE table_name partition (month=1, day=1) set location '/usr/external_data/new_years_day';
