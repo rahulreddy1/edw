@@ -1,1 +1,20 @@
 
+--to get number of orders by order status for a given date
+
+select order_status, count(*) from tablename
+where order_date = '2015-01-30'
+group by order_status
+order by order_status;
+
+--to get second highest value in a table
+
+select MAX(col_name) from table_name limit 1,1; 
+
+--to get number of pending orders in 2015 January
+
+select order_date, count(*) from tablename
+where order_date like '2015-01%' and order_status in ('PENDING', 'PENDING_PAYMENT', 'PAYMENT_REVIEW')
+--where order_date between '2015-01-01' and '2015-01-31'
+--and (order_status like 'PENDING%' or order_status in ('PAYMENT_REVIEW', 'ON_HOLD'))
+group by order_date
+order by order_date;
