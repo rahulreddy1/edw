@@ -24,3 +24,8 @@ delete table_name where i = 1;
 --File format must be in ORC
 --Table must be bucketed
 --Transactional must be set to true under tblproperties
+--to support insert, update and delete
+
+set hive.support.concurrency=true
+set hive.enforce.bucketing=true
+set hive.exec.dynamic.partition.mode=nonstrict
