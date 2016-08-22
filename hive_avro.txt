@@ -1,1 +1,18 @@
 
+-- creating table with avro data
+
+CREATE EXTERNAL TABLE table_name
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
+LOCATION 'hdfs:///user/hive/warehouse/retail_stage.db/table_name'
+TBLPROPERTIES ('avro.schema.url'='hdfs://quickstart.cloudera/user/cloudera/retail_stage/table_name.avsc');
+
+-- creating table with avro data in latest versions
+(can define schema instead of writing TBLPROPERTIES)
+
+CREATE EXTERNAL TABLE table_name
+STORED AS AVRO
+LOCATION 'hdfs:///user/hive/warehouse/retail_stage.db/table_name'
+TBLPROPERTIES ('avro.schema.url'='hdfs://quickstart.cloudera/user/cloudera/retail_stage/table_name.avsc');
+
