@@ -1,0 +1,7 @@
+
+--substr
+
+SUBSTR('hadoop',4) returns 'oop'
+SUBSTR('hadoop',4,2) returns 'oo'
+
+--
