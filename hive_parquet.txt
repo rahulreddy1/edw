@@ -1,0 +1,23 @@
+
+create external table parquet_table_name (x INT, y STRING)
+ROW FORMAT SERDE 'parquet.hive.serde.ParquetHiveSerDe'
+STORED AS
+INPUTFORMAT "parquet.hive.DeprecatedParquetInputFormat"
+OUTPUTFORMAT "parquet.hive.DeprecatedParquetOutputFormat"
+LOCATION '/test-warehouse/tinytable';
+
+
+CREATE EXTERNAL TABLE external_parquet (c1 INT, c2 STRING, c3 TIMESTAMP)
+STORED AS PARQUET
+LOCATION '/user/etl/destination';
+
+
+--Dynamically create Hive external table with Avro schema on Parquet Data
+
+CREATE EXTERNAL TABLE parquet_test
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
+STORED AS PARQUET
+LOCATION 'hdfs://myParquetFilesPath'
+TBLPROPERTIES ('avro.schema.url'='http://myHost/myAvroSchema.avsc');
+
+
