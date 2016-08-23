@@ -4,4 +4,9 @@
 SUBSTR('hadoop',4) returns 'oop'
 SUBSTR('hadoop',4,2) returns 'oo'
 
+--to convert timestamp to date in bigint
+
+select from_unixtime(cast(substr(order_date, 1, 10) AS bigint)) from dbname.tablename;
+
 --
+
