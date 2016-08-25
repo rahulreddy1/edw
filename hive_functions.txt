@@ -8,5 +8,7 @@ SUBSTR('hadoop',4,2) returns 'oo'
 
 select from_unixtime(cast(substr(order_date, 1, 10) AS bigint)) from dbname.tablename;
 
---
+--to remove header
+
+sed -i 1d cars.csv
 
